@@ -6,21 +6,21 @@
         a.button {
           display: inline-block;
           padding: 10px 20px;
-          background-color: #007bff;
-          color: #fff;
+          background-color: rgb(0, 123, 255);
+          color: rgb(255, 255, 255);
           text-decoration: none;
           border: none;
           border-radius: 5px;
           cursor: pointer;
         }
         a.button:hover {
-          background-color: #0056b3;
+          background-color: rgb(0, 0, 255);
         }
         a.button:active {
-          background-color: #ff0000;
+          background-color: rgb(255, 0, 0);
         }
         a.button {
-          margin: 10px 5px
+          margin: 30px 15px
         }
         body {
           margin: 0;
@@ -28,13 +28,20 @@
           height: 100vh;
           display: flex;
           flex-direction: column;
-          justify-content: space-between; /* Push content to the bottom */
+          justify-content: space-between;
         }
         .bottom-middle {
           text-align: center;
           position: relative;
           bottom: 0;
-          margin-bottom: 20px; /* Adjust this value as needed */
+          margin-bottom: 20px;
+          font-size: 175%
+        }
+        .top-middle {
+          text-align: center;
+          position: relative;
+          bottom: 0;
+          margin-top: 20px;
           font-size: 175%
         }
       </style>
@@ -43,6 +50,7 @@
       </script>
     </head>
     <body>
+      <p class="top-middle">Welcome to my WebHub</p>
       <a href="https://www.youtube.com" class="button" target="_blank">Youtube</a>
       <a href="https://www.twitch.tv/" class="button" target="_blank">Twitch</a>
       <a href="https://www.amazon.se/gp/cart/view.html?ref_=nav_top_cart" class="button" target="_blank">Amazon</a>
@@ -65,6 +73,7 @@
       <a href="https://www.skolmaten.se/" class="button" target="_blank">Skolmaten</a>
       <a href="https://learnenglish.britishcouncil.org/" class="button" target="_blank">British council</a>
       <a href="https://grizak.github.io/Bingo/" class="button" target="_blank">Bingo</a>
+      <a href="" class="button" target="_blank"></a>
       <p class="bottom-middle">If you want me to add more liks, please mail me at gronlundisak11@gmail.com</p>
     </body>
   </html> 
