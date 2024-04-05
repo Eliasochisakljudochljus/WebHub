@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <syle>
+        a.button {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: rgb(0, 123, 255);
+          color: rgb(255, 255, 255);
+          text-decoration: none;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        a.button:hover {
+          background-color: rgb(0, 0, 255);
+        }
+        a.button:active {
+          background-color: rgb(255, 0, 0);
+        }
+        a.button {
+          margin: 10px 5px;
+        }
+        body {
+          margin: 0;
+          padding: 0;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;  
+          justify-content: space-between;
+        }
+        .bottom-middle {
+          text-align: center;
+          position: relative;
+          bottom: 0;
+          margin-bottom: 20px;
+          font-size: 175%;
+        }
+        .top-middle {
+          text-align: center;
+          position: relative;
+          bottom: 0;
+          margin-top: 20px;
+          font-size: 175%;
+        }
+        .search-bar {
+          text-align: center;
+          margin-top: 20px;
+        }
+        .search-input {
+          padding: 5px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          width: 300px;
+          max-width: 80%;
+        }
+      </syle>
+      <script>
+              function filterFolders() {
+        var input, filter, links, a, i;
+        input = document.querySelector('.search-input');
+        filter = input.value.toUpperCase();
+        links = document.querySelectorAll('.button');
+  
+        for (i = 0; i < links.length; i++) {
+          a = links[i];
+          if (a.textContent.toUpperCase().indexOf(filter) > -1) {
+            a.style.display = "";
+          } else {
+            a.style.display = "none";
+          }
+        }
+      }
+      </script>
+    </head>
+    <body>
+      <div class="search-bar">
+        <input type="text" class="search-input" placeholder="Search folders" oninput="filterFolders()">
+      </div>
+      <a href="media.html" class="button">Media</a>
+      <a href="shopping.html" class="button">Shopping</a>
+      <a href="games.html" class="button">Games</a>
+      <a href="school.html" class="button">School</a>
+      <a href="folowme.html" class="button">Follow Me</a>
+      <a href="misc.html" class="button">Misc</a>
+    </body>
+  </html>
