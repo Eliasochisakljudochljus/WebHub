@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <style>
+        a.button {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: rgb(0, 123, 255);
+          color: rgb(255, 255, 255);
+          text-decoration: none;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        a.button:hover {
+          background-color: rgb(0, 0, 255);
+        }
+        a.button:active {
+          background-color: rgb(255, 0, 0);
+        }
+        a.button {
+          margin: 10px 5px;
+        }
+        body {
+          margin: 0;
+          padding: 0;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;  
+          justify-content: space-between;
+        }
+        .bottom-middle {
+          text-align: center;
+          position: relative;
+          bottom: 0;
+          margin-bottom: 20px;
+          font-size: 175%;
+        }
+        .top-middle {
+          text-align: center;
+          position: relative;
+          bottom: 0;
+          margin-top: 20px;
+          font-size: 175%;
+        }
+        .search-bar {
+          text-align: center;
+          margin-top: 20px;
+        }
+        .search-input {
+          padding: 5px;
+          border-radius: 5px;
+          border: 1px solid #ccc;
+          width: 300px;
+          max-width: 80%;
+        }
+      </style>
+      <script>
+        function filterLinks() {
+          var input, filter, links, a, i;
+          input = document.querySelector('.search-input');
+          filter = input.value.toUpperCase();
+          links = document.querySelectorAll('.button');
+          for (i = 0; i < links.length; i++) {
+            a = links[i];
+            if (a.textContent.toUpperCase().indexOf(filter) > -1) {
+              a.style.display = "";
+            } else {
+              a.style.display = "none";
+          }
+        }
+      }
+      </script>
+    </head>
+    <body>
+      <a href="https://poki.com/se" class="button" target="_blank">Poki</a>
+      <a href="https://www.crazygames.com/" class="button" target="_blank">Crazygames</a>
+      <a href="https://www.spelo.se/" class="button" target="_blank">Spelo</a>
+    </body>
+  </html>
