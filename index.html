@@ -2,58 +2,15 @@
   <html>
     <head>
       <title>Webhub</title>
-      <style>
-        a.button {
-          display: inline-block;
-          padding: 10px 20px;
-          background-color: rgb(0, 123, 255);
-          color: rgb(255, 255, 255);
-          text-decoration: none;
-          border: none;
-          border-radius: 5px;
-          cursor: pointer;
-        }
-        a.button:hover {
-          background-color: rgb(0, 0, 255);
-        }
-        a.button:active {
-          background-color: rgb(255, 0, 0);
-        }
-        body {
-          margin: 0;
-          padding: 0;
-          height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
-        .bottom-middle {
-          text-align: center;
-          position: relative;
-          bottom: 0;
-          margin-bottom: 20px;
-          font-size: 175%
-        }
-        .top-middle {
-          text-align: center;
-          position: relative;
-          bottom: 0;
-          margin-top: 20px;
-          font-size: 175%
-        }
-        .button1 {
-          padding: 5px 50px
-        }
-      </style>
-      <script>
-        
-      </script>
+      <link rel="stylesheet" href="Css/main.css">
+      <script src="Js/main.js"></script>
     </head>
     <body>
       <p class="top-middle">Welcome to my WebHub. Click the button down below to get to the links or click the other link to get folders</p>
       <a href="all the links.html" class="button" class="button1">Click here to get to the links</a>
       <a href="folders.html" class="button
       ">Folders</a>
+      <div class="button" onclick="darkmodetoggle()" id="light">Dark mode</div>
       <p class="top-middle">Down below will be the most used links</p>
       <a href="https://www.youtube.com" class="button" target="_blank">Youtube</a>
       <a href="https://onlinekalkylatorn.se/" class="button" target="_blank">Kalkylator</a>
