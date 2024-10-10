@@ -1,0 +1,17 @@
+<!-- views/editLink.ejs -->
+
+<h2>Edit Link</h2>
+<form action="/links/edit/<%= link._id %>?_method=PUT" method="POST" class="form">
+  <div>
+    <label for="title">Link Title</label>
+    <input type="text" name="title" id="title" value="<%= link.title %>" required>
+  </div>
+  
+  <div>
+    <label for="url">Link URL</label>
+    <input type="url" name="url" id="url" value="<%= link.url %>" required>
+  </div>
+  
+  <button type="submit">Update Link</button>
+</form>
+<a href="/dashboard">Back to Dashboard</a>

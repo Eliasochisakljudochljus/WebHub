@@ -1,0 +1,24 @@
+<!-- views/dashboard.ejs -->
+
+<h2>Your Links</h2>
+<a href="/links/add">Add New Link</a>
+
+<% if (links.length === 0) { %>
+  <p>You have no links. Start by adding one!</p>
+<% } else { %>
+  <ul>
+    <% links.forEach(function(link) { %>
+      <li>
+        <a href="<%= link.url %>" target="_blank"><%= link.title %></a>
+        <a href="/links/edit/<%= link._id %>">Edit</a>
+        <form action="/links/delete/<%= link._id %>?_method=DELETE" method="post" style="
+          display:inline;
+          background-color: transparent;
+          margin: 10px 0;
+        ">
+          <button type="submit" class="delete-button">Delete</button>
+        </form>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>

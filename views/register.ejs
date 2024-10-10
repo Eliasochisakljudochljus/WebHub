@@ -1,0 +1,35 @@
+<!-- views/register.ejs -->
+
+<h2>Register</h2>
+<form action="/users/register" method="POST" class="form">
+  <% if (typeof errors != 'undefined' && errors.length > 0) { %>
+    <ul>
+      <% errors.forEach(function(error) { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+  
+  <div>
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" value="<%= typeof name != 'undefined' ? name : '' %>">
+  </div>
+  
+  <div>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" value="<%= typeof email != 'undefined' ? email : '' %>">
+  </div>
+  
+  <div>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
+  </div>
+  
+  <div>
+    <label for="password2">Confirm Password</label>
+    <input type="password" name="password2" id="password2">
+  </div>
+  
+  <button type="submit">Register</button>
+</form>
+<p>Already have an account? <a href="/users/login">Login</a></p>

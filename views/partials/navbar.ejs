@@ -1,0 +1,18 @@
+<!-- views/partials/navbar.ejs -->
+
+<nav class="bg-gray-800 p-4" style="
+  margin: 20px;
+  list-style-type:none;"
+>
+  <h1>Webhub - <%= title %></h1>
+  <ul class="flex justify-center space-x-4">
+    <li><a href="/" class="text-white hover:text-orange-500">Home</a></li>
+    <% if (user) { %>
+      <li><a href="/dashboard" class="text-white hover:text-orange-500">Dashboard</a></li>
+      <li><a href="/users/logout" class="text-white hover:text-orange-500">Logout</a></li>
+    <% } else { %>
+      <li><a href="/users/login" class="text-white hover:text-orange-500">Login</a></li>
+      <li><a href="/users/register" class="text-white hover:text-orange-500">Register</a></li>
+    <% } %>
+  </ul>
+</nav>

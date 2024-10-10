@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %> | Webhub</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+  
+  <div class="container">
+    <%- include('../partials/messages') %>
+    <%- body %>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Webhub.</p>
+  </footer>
+
+  <script src="/js/scripts.js"></script>
+</body>
+</html>

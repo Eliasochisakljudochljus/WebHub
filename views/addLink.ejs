@@ -1,0 +1,17 @@
+<!-- views/addLink.ejs -->
+
+<h2>Add New Link</h2>
+<form action="/links/add" method="POST" class="form">
+  <div>
+    <label for="title">Link Title</label>
+    <input type="text" name="title" id="title" required>
+  </div>
+  
+  <div>
+    <label for="url">Link URL</label>
+    <input type="url" name="url" id="url" required>
+  </div>
+  
+  <button type="submit">Add Link</button>
+</form>
+<a href="/dashboard">Back to Dashboard</a>

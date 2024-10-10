@@ -1,0 +1,25 @@
+<!-- views/login.ejs -->
+
+<h2>Login</h2>
+<form action="/users/login" method="POST" class="form">
+  <% if (typeof errors != 'undefined' && errors.length > 0) { %>
+    <ul>
+      <% errors.forEach(function(error) { %>
+        <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+  <% } %>
+  
+  <div>
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" value="<%= typeof email != 'undefined' ? email : '' %>">
+  </div>
+  
+  <div>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password">
+  </div>
+  
+  <button type="submit">Login</button>
+</form>
+<p>Don't have an account? <a href="/users/register">Register</a></p>
