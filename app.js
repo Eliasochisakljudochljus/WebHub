@@ -1,5 +1,3 @@
-// server.js
-
 const express = require('express');
 const app = express();
 require('dotenv').config();
@@ -13,6 +11,9 @@ const expressLayouts = require('express-ejs-layouts');
 
 // Passport Config
 require('./config/passport')(passport);
+
+//JSON requst
+app.use(express.json())
 
 // DB Config
 const DBURI = process.env.DBURI;

@@ -1,11 +1,15 @@
 // routes/links.js
 
 const express = require('express');
+const app = express();
 const router = express.Router();
 const { ensureAuthenticated } = require('../middleware/auth');
+const methodOverride = require('method-override');
 
 // Load Link Model
 const Link = require('../models/Link');
+
+app.use(methodOverride('_method'));
 
 // GET Dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
@@ -119,37 +123,43 @@ router.put('/edit/:id', ensureAuthenticated, (req, res) => {
     });
 });
 
-// DELETE Link
+// DELETE Link Route
 router.delete('/delete/:id', ensureAuthenticated, (req, res) => {
+  console.log(`Attempting to delete link with ID: ${req.params.id}`);
+
   Link.findById(req.params.id)
-    .then(link => {
-      if (!link) {
-        req.flash('error_msg', 'No link found');
-        return res.redirect('/dashboard');
-      }
+      .then(link => {
+          if (!link) {
+              console.log('No link found');
+              req.flash('error_msg', 'No link found');
+              return res.redirect('/dashboard');
+          }
 
-      // Check if the link belongs to the user
-      if (link.user.toString() !== req.user.id) {
-        req.flash('error_msg', 'Not authorized');
-        return res.redirect('/dashboard');
-      }
+          // Check if the link belongs to the user
+          if (link.user.toString() !== req.user.id) {
+              console.log('User not authorized to delete this link');
+              req.flash('error_msg', 'Not authorized');
+              return res.redirect('/dashboard');
+          }
 
-      link.remove()
-        .then(() => {
-          req.flash('success_msg', 'Link removed');
+          // Instead of link.remove(), use Link.findByIdAndRemove
+          Link.findOneAndDelete(req.params.id)
+              .then(() => {
+                  console.log('Link deleted successfully');
+                  req.flash('success_msg', 'Link removed');
+                  res.redirect('/dashboard'); // Redirect to the dashboard after successful deletion
+              })
+              .catch(err => {
+                  console.log('Error removing link:', err);
+                  req.flash('error_msg', 'Error removing link');
+                  res.redirect('/dashboard');
+              });
+      })
+      .catch(err => {
+          console.log('Error retrieving link:', err);
+          req.flash('error_msg', 'Error retrieving link');
           res.redirect('/dashboard');
-        })
-        .catch(err => {
-          console.log(err);
-          req.flash('error_msg', 'Error removing link');
-          res.redirect('/dashboard');
-        });
-    })
-    .catch(err => {
-      console.log(err);
-      req.flash('error_msg', 'Error retrieving link');
-      res.redirect('/dashboard');
-    });
+      });
 });
 
 module.exports = router;

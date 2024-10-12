@@ -1,0 +1,38 @@
+<h2>All Links</h2>
+
+<% if (links.length === 0) { %>
+  <p>No links added yet. Start adding some!</p>
+  <a href="/links/add">Add a new link</a>
+<% } else { %>
+  <ul>
+    <% links.forEach(link => { %>
+      <li>
+        <a href="<%= link.url %>" target="_blank"><%= link.title %></a>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>
+
+<a href="/dashboard">Back to Dashboard</a>
+
+<style>
+  ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+}
+
+li {
+    margin: 10px 0; /* Space between links */
+}
+
+a {
+    text-decoration: none; /* Remove underline */
+    color: #3498db; /* Link color */
+    transition: color 0.3s; /* Smooth color transition */
+}
+
+a:hover {
+    color: #2980b9; /* Darker link color on hover */
+}
+
+</style>

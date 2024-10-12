@@ -4,9 +4,10 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-
+const Link = require('../models/Link');
 // Load User Model
 const User = require('../models/User');
+const { ensureAuthenticated } = require('../middleware/auth');
 
 // GET Register Page
 router.get('/register', (req, res) => res.render('register', { title: 'Register' }));
@@ -102,6 +103,16 @@ router.get('/logout', (req, res) => {
     req.flash('success_msg', 'You are logged out');
     res.redirect('/');
   });
+});
+
+// Route to get all links
+router.get('/links', ensureAuthenticated, async (req, res) => {
+  try {
+      const links = await Link.find({}); // Fetch all links from the database
+      res.render('allLinks', { title: 'All Links', links }); // Render the view
+  } catch (error) {
+      res.status(500).send('Server Error');
+  }
 });
 
 module.exports = router;
