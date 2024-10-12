@@ -216,3 +216,7 @@ footer p {
 ::-webkit-scrollbar-thumb:hover {
   background: #50E3C2;
 }
+
+label {
+  color: black;
+}
