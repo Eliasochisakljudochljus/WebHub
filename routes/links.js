@@ -9,6 +9,8 @@ const methodOverride = require('method-override');
 // Load Link Model
 const Link = require('../models/Link');
 
+const links = Link.find({}); // Fetch all links from the database
+
 app.use(methodOverride('_method'));
 
 // GET Dashboard
@@ -26,7 +28,7 @@ router.get('/dashboard', ensureAuthenticated, (req, res) => {
 
 // GET Add Link Form
 router.get('/add', ensureAuthenticated, (req, res) => {
-  res.render('addLink', { title: "Add Link" });
+  res.render('addLink', { title: "Add Link", links });
 });
 
 // POST Add Link
@@ -76,7 +78,7 @@ router.get('/edit/:id', ensureAuthenticated, (req, res) => {
         return res.redirect('/dashboard');
       }
 
-      res.render('editLink', { link, title: "Edit link" });
+      res.render('editLink', { link, title: "Edit link", links });
       
     })
     .catch(err => {

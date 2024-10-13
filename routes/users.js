@@ -8,9 +8,18 @@ const Link = require('../models/Link');
 // Load User Model
 const User = require('../models/User');
 const { ensureAuthenticated } = require('../middleware/auth');
+let links = []
+
+Link.find({})
+  .then(foundLinks => {
+    links = foundLinks
+  })
+  .catch(err => {
+    console.error(err)
+  })
 
 // GET Register Page
-router.get('/register', (req, res) => res.render('register', { title: 'Register' }));
+router.get('/register', (req, res) => res.render('register', { title: 'Register', links }));
 
 // POST Register
 router.post('/register', (req, res) => {
@@ -28,7 +37,7 @@ router.post('/register', (req, res) => {
   }
 
   // Check password length
-  if (password.length < 6) {
+  if (password.length < 8) {
     errors.push({ msg: 'Password should be at least 6 characters' });
   }
 
@@ -85,7 +94,7 @@ router.post('/register', (req, res) => {
 });
 
 // GET Login Page
-router.get('/login', (req, res) => res.render('login', { title: "Login" }));
+router.get('/login', (req, res) => res.render('login', { title: "Login", links }));
 
 // POST Login
 router.post('/login', (req, res, next) => {
@@ -108,7 +117,6 @@ router.get('/logout', (req, res) => {
 // Route to get all links
 router.get('/links', ensureAuthenticated, async (req, res) => {
   try {
-      const links = await Link.find({}); // Fetch all links from the database
       res.render('allLinks', { title: 'All Links', links }); // Render the view
   } catch (error) {
       res.status(500).send('Server Error');

@@ -22,7 +22,7 @@ const DBURI = process.env.DBURI;
 mongoose
   .connect(DBURI)
   .then(() => console.log('MongoDB Connected'))
-  .catch(err => console.log(err));
+  .catch(err => console.error(err));
 
 // EJS
 app.use(expressLayouts);
