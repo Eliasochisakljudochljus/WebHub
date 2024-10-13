@@ -1,5 +1,3 @@
-// routes/links.js
-
 const express = require('express');
 const app = express();
 const router = express.Router();
@@ -9,7 +7,15 @@ const methodOverride = require('method-override');
 // Load Link Model
 const Link = require('../models/Link');
 
-const links = Link.find({}); // Fetch all links from the database
+let links = []
+
+Link.find({})
+  .then(foundLinks => {
+    links = foundLinks
+  })
+  .catch(err => {
+    console.error(err)
+  })
 
 app.use(methodOverride('_method'));
 
@@ -162,6 +168,15 @@ router.delete('/delete/:id', ensureAuthenticated, (req, res) => {
           req.flash('error_msg', 'Error retrieving link');
           res.redirect('/dashboard');
       });
+});
+
+// Route to get all links
+router.get('/links', ensureAuthenticated, async (req, res) => {
+  try {
+      res.render('allLinks', { title: 'All Links', links }); // Render the view
+  } catch (error) {
+      res.status(500).send('Server Error');
+  }
 });
 
 module.exports = router;

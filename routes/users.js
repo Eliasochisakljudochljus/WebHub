@@ -1,5 +1,3 @@
-// routes/users.js
-
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
@@ -8,15 +6,7 @@ const Link = require('../models/Link');
 // Load User Model
 const User = require('../models/User');
 const { ensureAuthenticated } = require('../middleware/auth');
-let links = []
-
-Link.find({})
-  .then(foundLinks => {
-    links = foundLinks
-  })
-  .catch(err => {
-    console.error(err)
-  })
+const links = Link.find({}); // Fetch all links from the database
 
 // GET Register Page
 router.get('/register', (req, res) => res.render('register', { title: 'Register', links }));
@@ -112,15 +102,6 @@ router.get('/logout', (req, res) => {
     req.flash('success_msg', 'You are logged out');
     res.redirect('/');
   });
-});
-
-// Route to get all links
-router.get('/links', ensureAuthenticated, async (req, res) => {
-  try {
-      res.render('allLinks', { title: 'All Links', links }); // Render the view
-  } catch (error) {
-      res.status(500).send('Server Error');
-  }
 });
 
 module.exports = router;
