@@ -173,7 +173,7 @@ router.delete('/delete/:id', ensureAuthenticated, (req, res) => {
 // Route to get all links
 router.get('/links', ensureAuthenticated, async (req, res) => {
   try {
-      res.render('allLinks', { title: 'All Links', links }); // Render the view
+      res.render('allLinks', { title: 'All Links', links: links }); // Render the view
   } catch (error) {
       res.status(500).send('Server Error');
   }
